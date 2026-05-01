@@ -1,0 +1,23 @@
+{
+  "name": "intellmeet-backend",
+  "version": "1.0.0",
+  "description": "IntelMeet Backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "socket.io": "^4.5.0",
+    "dotenv": "^16.0.3",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5"
+  }
+}
