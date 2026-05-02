@@ -1,24 +1,34 @@
-import { useState } from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
-export default function App() {
-  const [backendStatus, setBackendStatus] = useState('Checking...');
+import Navbar from "./components/Navbar";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import MeetingPage from "./pages/MeetingPage";
 
-  const checkBackend = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/health');
-      const data = await response.json();
-      setBackendStatus(data.status);
-    } catch (error) {
-      setBackendStatus('Backend not running');
-    }
-  };
+const Layout = () => {
+  const location = useLocation();
 
   return (
-    <div className="container">
-      <h1>IntelMeet</h1>
-      <p>Frontend is running!</p>
-      <button onClick={checkBackend}>Check Backend</button>
-      <p className="status">{backendStatus}</p>
-    </div>
+    <>
+      {location.pathname !== "/login" && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/meeting" element={<MeetingPage />} />
+      </Routes>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
   );
 }
+
+export default App;
