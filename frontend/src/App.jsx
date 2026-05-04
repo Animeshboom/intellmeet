@@ -1,17 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import DashboardPage from "./pages/DashboardPage";
-import LoginPage from "./pages/LoginPage";
 import MeetingPage from "./pages/MeetingPage";
+import LoginPage from "./pages/LoginPage";
 
-const Layout = () => {
-  const location = useLocation();
-
+function App() {
   return (
-    <>
-      {location.pathname !== "/login" && <Navbar />}
+    <Router>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<LoginPage />} />
@@ -19,14 +16,6 @@ const Layout = () => {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/meeting" element={<MeetingPage />} />
       </Routes>
-    </>
-  );
-};
-
-function App() {
-  return (
-    <Router>
-      <Layout />
     </Router>
   );
 }

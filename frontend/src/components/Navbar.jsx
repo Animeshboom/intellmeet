@@ -1,13 +1,12 @@
 // components/Navbar.jsx
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear(); // clear storage
-    navigate("/login");   // redirect
+    localStorage.clear();
+    navigate("/login");
   };
 
   return (
@@ -15,15 +14,15 @@ const Navbar = () => {
       <h2 style={styles.logo}>IntellMeet</h2>
 
       <div style={styles.links}>
-        <button onClick={() => navigate("/dashboard")} style={styles.btn}>
+        <button style={styles.btn} onClick={() => navigate("/dashboard")}>
           Dashboard
         </button>
 
-        <button onClick={() => navigate("/meeting")} style={styles.btn}>
+        <button style={styles.btn} onClick={() => navigate("/meeting")}>
           Meeting
         </button>
 
-        <button onClick={handleLogout} style={styles.logout}>
+        <button style={styles.logout} onClick={handleLogout}>
           Logout
         </button>
       </div>
@@ -35,27 +34,35 @@ const styles = {
   nav: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "10px 20px",
+    alignItems: "center",
+    padding: "15px 30px",
+    background: "#0f172a",
+    color: "#fff",
+  },
+  logo: {
+    fontSize: "22px",
+    fontWeight: "bold",
+  },
+  links: {
+    display: "flex",
+    gap: "15px",
+  },
+  btn: {
+    padding: "8px 14px",
     background: "#1e293b",
     color: "#fff",
-    alignItems: "center"
-  },
-  logo: { margin: 0 },
-  links: { display: "flex", gap: "10px" },
-  btn: {
-    padding: "8px 12px",
-    background: "#3b82f6",
-    color: "#fff",
     border: "none",
-    cursor: "pointer"
+    borderRadius: "6px",
+    cursor: "pointer",
   },
   logout: {
-    padding: "8px 12px",
+    padding: "8px 14px",
     background: "#ef4444",
     color: "#fff",
     border: "none",
-    cursor: "pointer"
-  }
+    borderRadius: "6px",
+    cursor: "pointer",
+  },
 };
 
 export default Navbar;

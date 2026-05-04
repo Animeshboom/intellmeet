@@ -1,31 +1,27 @@
-// Dashboard page
-// TODO: Show user's meetings and options to join/create
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
+const DashboardPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Dashboard</h1>
+      <h1>Welcome to IntellMeet 🚀</h1>
+      <p>Your AI-powered meeting workspace</p>
 
       <div style={styles.cards}>
-        <div style={styles.card}>
-          <h3>Total Employees</h3>
-          <p>120</p>
+        <div style={styles.card} onClick={() => navigate("/meeting")}>
+          <h3>Create Meeting</h3>
+          <p>Start a new smart meeting</p>
         </div>
 
         <div style={styles.card}>
-          <h3>Meetings Today</h3>
-          <p>8</p>
+          <h3>View Meetings</h3>
+          <p>See past meetings (coming soon)</p>
         </div>
 
         <div style={styles.card}>
-          <h3>Tasks Pending</h3>
-          <p>15</p>
-        </div>
-
-        <div style={styles.card}>
-          <h3>Revenue</h3>
-          <p>₹50,000</p>
+          <h3>AI Insights</h3>
+          <p>Analyze meeting productivity</p>
         </div>
       </div>
     </div>
@@ -34,25 +30,25 @@ const Dashboard = () => {
 
 const styles = {
   container: {
-    padding: "20px",
-    background: "#f1f5f9",
-    minHeight: "100vh"
-  },
-  heading: {
-    marginBottom: "20px"
+    padding: "40px",
+    textAlign: "center",
   },
   cards: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "20px"
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+    marginTop: "30px",
+    flexWrap: "wrap",
   },
   card: {
-    background: "#fff",
+    width: "220px",
     padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-    textAlign: "center"
-  }
+    background: "#1e293b",
+    color: "#fff",
+    borderRadius: "12px",
+    cursor: "pointer",
+    transition: "0.3s",
+  },
 };
 
-export default Dashboard;
+export default DashboardPage;
